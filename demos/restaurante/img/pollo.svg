@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="Ilustración de pollo a la brasa con papas">
+<rect width="400" height="400" fill="#7a3418"/>
+<circle cx="212" cy="214" r="160" fill="#3d170a" opacity=".5"/>
+<circle cx="200" cy="200" r="160" fill="#efe8db"/>
+<circle cx="200" cy="200" r="122" fill="#fbf8f2" stroke="#e3dacb" stroke-width="3"/>
+<path d="M120 200 q10 -70 90 -72 q60 4 64 56 q-6 62 -76 68 q-70 -2 -78 -52z" fill="#c8712c" stroke="#8f4614" stroke-width="3"/>
+<path d="M140 195 q16 -46 70 -50 q40 4 48 36" fill="none" stroke="#e5a056" stroke-width="10" stroke-linecap="round" opacity=".7"/>
+<g fill="#8f4614" opacity=".55"><circle cx="175" cy="210" r="5"/><circle cx="215" cy="190" r="4"/><circle cx="230" cy="220" r="5"/><circle cx="190" cy="170" r="4"/></g>
+<g fill="#f2c14e" stroke="#d99a26" stroke-width="2">
+<rect x="215" y="245" width="70" height="13" rx="4" transform="rotate(-25 250 251)"/>
+<rect x="210" y="262" width="74" height="13" rx="4" transform="rotate(-8 247 268)"/>
+<rect x="222" y="278" width="62" height="13" rx="4" transform="rotate(10 253 284)"/>
+<rect x="250" y="235" width="56" height="13" rx="4" transform="rotate(-50 278 241)"/>
+</g>
+<g fill="#5aa03a"><ellipse cx="135" cy="262" rx="26" ry="16" transform="rotate(-20 135 262)"/><ellipse cx="160" cy="280" rx="22" ry="13" transform="rotate(15 160 280)"/></g>
+<g fill="#d9402b"><circle cx="142" cy="258" r="7"/><circle cx="165" cy="276" r="6"/></g>
+<g><circle cx="300" cy="150" r="16" fill="#f6e9a8" stroke="#d8c46a" stroke-width="2"/><circle cx="300" cy="150" r="10" fill="#e9d36a"/></g>
+</svg>

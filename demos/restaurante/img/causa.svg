@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="Ilustración de una causa limeña">
+<rect width="400" height="400" fill="#c9a227"/>
+<circle cx="212" cy="214" r="160" fill="#6e5610" opacity=".4"/>
+<circle cx="200" cy="200" r="160" fill="#efe8db"/>
+<circle cx="200" cy="200" r="122" fill="#fbf8f2" stroke="#e3dacb" stroke-width="3"/>
+<circle cx="200" cy="200" r="72" fill="#f4cf3e" stroke="#d6a91c" stroke-width="4"/>
+<g fill="#6aa84f" stroke="#3d7a2a" stroke-width="2">
+<path d="M150 190 q50 -40 100 0 q-50 20 -100 0z"/>
+<path d="M155 215 q45 -30 90 0 q-45 18 -90 0z" fill="#8cc06a"/>
+</g>
+<circle cx="200" cy="200" r="20" fill="#fffdf6" stroke="#eee3c9" stroke-width="2"/><circle cx="200" cy="200" r="10" fill="#f2b630"/>
+<circle cx="232" cy="236" r="9" fill="#3b2433"/><circle cx="170" cy="168" r="8" fill="#3b2433"/>
+<g fill="#d9402b"><circle cx="128" cy="140" r="5"/><circle cx="276" cy="270" r="5"/><circle cx="135" cy="262" r="5"/></g>
+<g fill="none" stroke="#e7b729" stroke-width="4" stroke-linecap="round"><path d="M268 128 q12 10 4 24"/></g>
+</svg>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="Ilustración de un suspiro a la limeña">
+<rect width="400" height="400" fill="#5b2a45"/>
+<circle cx="212" cy="214" r="150" fill="#2b1020" opacity=".5"/>
+<circle cx="200" cy="200" r="150" fill="#e9e3ec" opacity=".55"/>
+<circle cx="200" cy="200" r="132" fill="#f7f2f6" stroke="#ddd0d8" stroke-width="4"/>
+<circle cx="200" cy="200" r="110" fill="#f2c27b"/>
+<g fill="#fffdf9" stroke="#efe4d4" stroke-width="2">
+<circle cx="200" cy="200" r="70"/>
+<circle cx="200" cy="200" r="48"/>
+<circle cx="200" cy="200" r="24"/>
+</g>
+<path d="M200 130 q30 30 0 70 q-30 40 0 70" fill="none" stroke="#efe4d4" stroke-width="3"/>
+<g fill="#9a5a2a"><circle cx="180" cy="170" r="3"/><circle cx="222" cy="182" r="3"/><circle cx="190" cy="230" r="3"/><circle cx="230" cy="220" r="3"/><circle cx="168" cy="205" r="3"/><circle cx="210" cy="160" r="3"/></g>
+<path d="M300 300 l40 40" stroke="#c7b8c2" stroke-width="10" stroke-linecap="round"/>
+</svg>

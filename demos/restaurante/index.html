@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brasa &amp; Sal — Restaurante (demo ficticia)</title>
+<meta name="description" content="Demostración de una web para restaurante creada por LATIF WEB STUDIO. Negocio ficticio.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="img/pollo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=Work+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff8ef;--ink:#2a1a12;--muted:#6d5a4e;--ember:#c2410c;--ember-d:#9a3412;--leaf:#3f6b3a;--card:#fff;--line:#eadccb;--serif:"Playfair Display",Georgia,serif;--sans:"Work Sans",system-ui,"Segoe UI",sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;font:1.0625rem/1.65 var(--sans);color:var(--ink);background:var(--bg)}
+img{max-width:100%;display:block}
+h1,h2,h3{font-family:var(--serif);line-height:1.1;margin:0 0 .4em}
+h2{font-size:clamp(2rem,4vw,2.9rem)}
+a{color:inherit}
+:focus-visible{outline:3px solid #f59e0b;outline-offset:3px}
+.wrap{width:min(1120px,100% - 32px);margin-inline:auto}
+.demo-bar{background:#111;color:#fde68a;text-align:center;font-size:.85rem;padding:8px 16px}
+.demo-bar a{color:#fff}
+.nav{position:sticky;top:0;z-index:30;background:rgba(255,248,239,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;justify-content:space-between;align-items:center;height:64px;gap:16px}
+.logo{font-family:var(--serif);font-weight:800;font-size:1.4rem;text-decoration:none}
+.logo span{color:var(--ember)}
+.nav nav{display:flex;gap:22px;align-items:center}
+.nav nav a{text-decoration:none;font-weight:500}
+.nav nav a:hover{color:var(--ember-d)}
+.btn{display:inline-flex;align-items:center;gap:.4em;background:var(--ember-d);color:#fff;border:0;border-radius:10px;padding:.8em 1.3em;font:700 1rem var(--sans);text-decoration:none;cursor:pointer;transition:transform .2s,background .2s}
+.btn:hover{background:#7c2d12;transform:translateY(-2px)}
+.btn--light{background:#fff;color:var(--ink)}.btn--light:hover{background:#fde68a}
+.hero{position:relative;color:#fff;background:#2a1a12;overflow:hidden}
+.hero__bg{position:absolute;inset:0;display:grid;grid-template-columns:repeat(3,1fr);opacity:.55}
+.hero__bg img{width:100%;height:100%;object-fit:cover}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(26,14,8,.95) 0%,rgba(26,14,8,.75) 55%,rgba(26,14,8,.35))}
+.hero .wrap{position:relative;z-index:1;padding:clamp(80px,12vw,150px) 0}
+.hero h1{font-size:clamp(2.6rem,7vw,5rem);max-width:12ch}
+.hero h1 em{color:#fdba74}
+.hero p{max-width:34em;font-size:1.15rem;color:#f3e3d3}
+.hero .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.chip{display:inline-block;border:1px solid rgba(255,255,255,.4);border-radius:999px;padding:4px 12px;font-size:.85rem;margin-bottom:18px}
+section{padding:clamp(64px,9vw,104px) 0}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,64px);align-items:center}
+.about img{border-radius:24px;box-shadow:0 24px 50px -28px rgba(42,26,18,.6)}
+.kicker{color:var(--ember-d);font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:.8rem;margin:0 0 .6em}
+.stats{display:flex;gap:28px;margin-top:20px;flex-wrap:wrap}
+.stats b{display:block;font-family:var(--serif);font-size:1.6rem;color:var(--ember-d)}
+.menu-sec{background:#fff}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin:24px 0 32px}
+.tab{border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:.5em 1.1em;font:500 .95rem var(--sans);cursor:pointer;color:var(--ink);transition:.2s}
+.tab[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.menu{display:grid;grid-template-columns:1fr 1fr;gap:6px 48px}
+.dish{display:flex;gap:16px;padding:16px 0;border-bottom:1px dashed var(--line);animation:fade .4s ease}
+.dish img{width:72px;height:72px;border-radius:50%;flex:none}
+.dish h3{font-size:1.15rem;margin:0;display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+.dish h3 span{font-family:var(--sans);font-size:1rem;color:var(--ember-d);white-space:nowrap}
+.dish p{margin:.2em 0 0;color:var(--muted);font-size:.95rem}
+.price-note{margin-top:20px;font-size:.9rem;color:var(--muted);background:#fff8ef;border-left:4px solid #f59e0b;padding:10px 14px}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}}
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:220px;gap:14px;margin-top:32px}
+.gallery figure{margin:0;border-radius:18px;overflow:hidden;position:relative}
+.gallery figure:first-child{grid-column:span 2;grid-row:span 2}
+.gallery img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.gallery figure:hover img{transform:scale(1.06)}
+.gallery figcaption{position:absolute;left:12px;bottom:12px;background:rgba(26,14,8,.75);color:#fff;font-size:.85rem;padding:4px 10px;border-radius:999px}
+.info{background:var(--ink);color:#f3e3d3}
+.info h2,.info h3{color:#fff}
+.info .kicker{color:#fdba74}
+.info-grid{display:grid;grid-template-columns:1fr 1fr 1.2fr;gap:32px}
+.hours{list-style:none;padding:0;margin:0}
+.hours li{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.12)}
+.map{border-radius:18px;overflow:hidden;border:1px solid rgba(255,255,255,.15);position:relative}
+.map span{position:absolute;top:10px;left:10px;background:#fde68a;color:#111;font-size:.8rem;font-weight:700;padding:3px 10px;border-radius:999px}
+footer{background:#1a0f0a;color:#bfae9f;padding:28px 0;font-size:.9rem}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+footer a{color:#fde68a}
+dialog{border:0;border-radius:20px;padding:0;width:min(480px,calc(100% - 32px));box-shadow:0 30px 80px rgba(0,0,0,.45)}
+dialog::backdrop{background:rgba(20,10,5,.6)}
+.dlg{padding:28px}
+.dlg header{display:flex;justify-content:space-between;align-items:start;gap:12px}
+.dlg .x{background:none;border:0;font-size:1.8rem;line-height:1;cursor:pointer;color:var(--muted)}
+.dlg .warn{background:#fef3c7;border-radius:10px;padding:10px 12px;font-size:.9rem}
+.dlg label{display:block;font-weight:700;font-size:.9rem;margin:12px 0 4px}
+.dlg input,.dlg select{width:100%;font:inherit;padding:10px 12px;border:1.5px solid var(--line);border-radius:10px}
+.dlg .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.dlg .btn{margin-top:18px;width:100%;justify-content:center}
+.dlg .result{margin:14px 0 0;font-weight:500;color:var(--leaf)}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .7s,transform .7s}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+@media (max-width:860px){.about,.info-grid{grid-template-columns:1fr}.menu{grid-template-columns:1fr}.gallery{grid-template-columns:1fr 1fr;grid-auto-rows:170px}}
+@media (max-width:640px){.nav nav a:not(.btn){display:none}.hero__bg{grid-template-columns:1fr}.hero__bg img:not(:first-child){display:none}.dlg .row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="demo-bar" role="note">Demostración de un <strong>restaurante ficticio</strong> creada por LATIF WEB STUDIO. Precios, dirección y horarios son de ejemplo. <a href="../../index.html#precios">¿Quieres una web así? Ver precios</a></div>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="#inicio">Brasa <span>&amp;</span> Sal</a>
+    <nav aria-label="Principal">
+      <a href="#nosotros">Nosotros</a>
+      <a href="#carta">Carta</a>
+      <a href="#galeria">Galería</a>
+      <a href="#visitanos">Visítanos</a>
+      <button class="btn" type="button" data-open-reserva>Reservas</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="inicio" style="padding:0">
+  <div class="hero__bg" aria-hidden="true"><img src="img/pollo.svg" alt=""><img src="img/anticuchos.svg" alt=""><img src="img/lomo.svg" alt=""></div>
+  <div class="wrap">
+    <span class="chip">Cocina peruana a la brasa · Restaurante ficticio</span>
+    <h1>Fuego lento, <em>sabor de casa.</em></h1>
+    <p>Carnes y pollo a la leña, anticuchos de la parrilla y postres de siempre, para compartir sin prisa.</p>
+    <div class="actions">
+      <a class="btn btn--light" href="#carta">Ver la carta</a>
+      <button class="btn" type="button" data-open-reserva>Consultar reserva</button>
+    </div>
+  </div>
+</section>
+
+<section id="nosotros">
+  <div class="wrap about">
+    <img class="reveal" src="img/anticuchos.svg" alt="Ilustración de anticuchos a la parrilla" width="400" height="400" loading="lazy">
+    <div class="reveal">
+      <p class="kicker">Nuestra historia (ejemplo)</p>
+      <h2>Una parrilla de barrio con mesa para todos</h2>
+      <p>Brasa &amp; Sal es un restaurante imaginario creado para esta demostración. Aquí iría la historia real del negocio: quién lo fundó, qué lo hace especial y por qué los clientes vuelven.</p>
+      <p>Un buen texto de presentación es corto, cercano y responde a lo que el cliente quiere saber antes de visitar el local.</p>
+      <div class="stats"><div><b>Leña</b>cocción tradicional</div><div><b>12</b>platos en carta</div><div><b>Mar–Dom</b>abierto</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="menu-sec" id="carta">
+  <div class="wrap">
+    <p class="kicker">Carta</p>
+    <h2>Para compartir y repetir</h2>
+    <div class="tabs" role="group" aria-label="Filtrar la carta">
+      <button class="tab" type="button" data-cat="todo" aria-pressed="true">Todo</button>
+      <button class="tab" type="button" data-cat="entradas" aria-pressed="false">Entradas</button>
+      <button class="tab" type="button" data-cat="fondos" aria-pressed="false">Fondos</button>
+      <button class="tab" type="button" data-cat="postres" aria-pressed="false">Postres</button>
+      <button class="tab" type="button" data-cat="bebidas" aria-pressed="false">Bebidas</button>
+    </div>
+    <div class="menu" id="menu" aria-live="polite"></div>
+    <p class="price-note"><strong>Precios de ejemplo.</strong> Todos los precios de esta carta son ficticios y solo sirven para mostrar el diseño.</p>
+  </div>
+</section>
+
+<section id="galeria">
+  <div class="wrap">
+    <p class="kicker">Galería</p>
+    <h2>De la parrilla a tu mesa</h2>
+    <div class="gallery">
+      <figure class="reveal"><img src="img/pollo.svg" alt="Ilustración de pollo a la brasa con papas" loading="lazy"><figcaption>Pollo a la brasa</figcaption></figure>
+      <figure class="reveal"><img src="img/ceviche.svg" alt="Ilustración de ceviche" loading="lazy"><figcaption>Ceviche</figcaption></figure>
+      <figure class="reveal"><img src="img/lomo.svg" alt="Ilustración de lomo saltado" loading="lazy"><figcaption>Lomo saltado</figcaption></figure>
+      <figure class="reveal"><img src="img/causa.svg" alt="Ilustración de causa limeña" loading="lazy"><figcaption>Causa limeña</figcaption></figure>
+      <figure class="reveal"><img src="img/suspiro.svg" alt="Ilustración de suspiro a la limeña" loading="lazy"><figcaption>Suspiro</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="info" id="visitanos">
+  <div class="wrap">
+    <p class="kicker">Visítanos</p>
+    <h2>Horarios y ubicación</h2>
+    <div class="info-grid">
+      <div>
+        <h3>Horario (ejemplo)</h3>
+        <ul class="hours">
+          <li><span>Lunes</span><span>Cerrado</span></li>
+          <li><span>Mar – Jue</span><span>12:00 – 22:00</span></li>
+          <li><span>Vie – Sáb</span><span>12:00 – 23:30</span></li>
+          <li><span>Domingo</span><span>12:00 – 17:00</span></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Dirección de ejemplo</h3>
+        <p>Av. Ejemplo 123, Distrito Demo<br>Lima, Perú</p>
+        <p><small>Esta dirección es ficticia. En una web real aquí iría un botón “Cómo llegar” con el enlace a Google Maps del local.</small></p>
+        <button class="btn" type="button" data-open-reserva>Consultar reserva</button>
+      </div>
+      <div class="map" role="img" aria-label="Mapa ilustrativo de ejemplo, no corresponde a una ubicación real">
+        <span>Mapa de ejemplo</span>
+        <svg viewBox="0 0 400 260" aria-hidden="true"><rect width="400" height="260" fill="#3a2a20"/><g stroke="#5a463a" stroke-width="14"><path d="M0 90h400M0 190h400M120 0v260M290 0v260"/></g><g stroke="#4a382d" stroke-width="6"><path d="M0 40h400M0 140h400M60 0v260M200 0v260M350 0v260"/></g><rect x="215" y="100" width="60" height="70" rx="6" fill="#5c7a3a" opacity=".6"/><circle cx="205" cy="125" r="16" fill="#ea580c"/><circle cx="205" cy="125" r="6" fill="#fff"/></svg>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Brasa &amp; Sal es un restaurante ficticio. Demo creada por LATIF WEB STUDIO.</span>
+    <a href="../../index.html">Ver más proyectos</a>
+  </div>
+</footer>
+
+<dialog id="reserva" aria-labelledby="r-title">
+  <form class="dlg" method="dialog" id="r-form" novalidate>
+    <header><h3 id="r-title">Consultar reserva</h3><button class="x" value="cancel" formnovalidate aria-label="Cerrar">×</button></header>
+    <p class="warn"><strong>Demostración:</strong> este formulario no envía ninguna reserva ni guarda datos. En una web real se conectaría con el WhatsApp del restaurante.</p>
+    <label for="r-name">Nombre</label><input id="r-name" required>
+    <div class="row">
+      <div><label for="r-date">Fecha</label><input id="r-date" type="date" required></div>
+      <div><label for="r-people">Personas</label><select id="r-people"><option>2</option><option>3</option><option>4</option><option>5</option><option>6 o más</option></select></div>
+    </div>
+    <button class="btn" type="submit" value="ok">Preparar consulta</button>
+    <p class="result" role="status" aria-live="polite"></p>
+  </form>
+</dialog>
+
+<script>
+(function(){
+  var items=[
+    {c:"entradas",n:"Anticuchos de la casa",d:"Brochetas a la parrilla con papa dorada y choclo.",p:28,img:"anticuchos"},
+    {c:"entradas",n:"Ceviche clásico",d:"Pescado del día, limón, ají limo y camote.",p:36,img:"ceviche"},
+    {c:"entradas",n:"Causa limeña",d:"Papa amarilla, palta y huevo.",p:22,img:"causa"},
+    {c:"fondos",n:"Pollo a la brasa (1/4)",d:"Con papas fritas y ensalada de la casa.",p:26,img:"pollo"},
+    {c:"fondos",n:"Pollo a la brasa (entero)",d:"Para compartir, con papas y ensalada familiar.",p:78,img:"pollo"},
+    {c:"fondos",n:"Lomo saltado",d:"Lomo al wok, tomate, cebolla, papas y arroz.",p:42,img:"lomo"},
+    {c:"postres",n:"Suspiro a la limeña",d:"Manjar casero y merengue al oporto.",p:16,img:"suspiro"},
+    {c:"postres",n:"Picarones",d:"Con miel de chancaca.",p:14,img:"suspiro"},
+    {c:"bebidas",n:"Chicha morada (jarra)",d:"Preparada en casa con maíz morado.",p:18,img:"bebida"},
+    {c:"bebidas",n:"Limonada frozen",d:"Limón, hierbabuena y hielo.",p:12,img:"bebida"}
+  ];
+  var menu=document.getElementById("menu");
+  function render(cat){
+    menu.innerHTML="";
+    items.filter(function(i){return cat==="todo"||i.c===cat}).forEach(function(i){
+      var el=document.createElement("article");el.className="dish";
+      el.innerHTML='<img src="img/'+i.img+'.svg" alt="" width="72" height="72" loading="lazy"><div><h3>'+i.n+'<span>S/ '+i.p+' <small>(ej.)</small></span></h3><p>'+i.d+'</p></div>';
+      menu.appendChild(el);
+    });
+  }
+  document.querySelectorAll(".tab").forEach(function(t){
+    t.addEventListener("click",function(){
+      document.querySelectorAll(".tab").forEach(function(o){o.setAttribute("aria-pressed","false")});
+      t.setAttribute("aria-pressed","true");render(t.dataset.cat);
+    });
+  });
+  render("todo");
+
+  var dlg=document.getElementById("reserva"),form=document.getElementById("r-form"),out=form.querySelector(".result");
+  var date=document.getElementById("r-date");date.min=new Date().toISOString().slice(0,10);
+  document.querySelectorAll("[data-open-reserva]").forEach(function(b){b.addEventListener("click",function(){out.textContent="";dlg.showModal()})});
+  form.addEventListener("submit",function(e){
+    if(e.submitter&&e.submitter.value==="cancel")return;
+    e.preventDefault();
+    var name=document.getElementById("r-name").value.trim();
+    if(!name||!date.value){out.style.color="#9a3412";out.textContent="Completa tu nombre y la fecha.";return}
+    out.style.color="";
+    out.textContent="Listo, "+name+". En la web real se abriría WhatsApp con tu consulta para el "+date.value.split("-").reverse().join("/")+" ("+document.getElementById("r-people").value+" personas). En esta demo no se ha enviado nada.";
+  });
+
+  if("IntersectionObserver" in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},{threshold:.12});
+    document.querySelectorAll(".reveal").forEach(function(el){io.observe(el)});
+  }else{document.querySelectorAll(".reveal").forEach(function(el){el.classList.add("in")})}
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hilo Norte — Tienda de ropa (demo ficticia)</title>
+<meta name="description" content="Demostración de catálogo de tienda de ropa creada por LATIF WEB STUDIO. Tienda ficticia, sin ventas reales.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23111'/%3E%3Ctext x='32' y='43' font-size='30' text-anchor='middle' fill='%23d4ff3f' font-family='Arial' font-weight='700'%3EHN%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f4f3ef;--ink:#111;--muted:#5d5d5d;--line:#dcdad3;--lime:#d4ff3f;--card:#fff;--head:"Space Grotesk",system-ui,sans-serif;--sans:"Inter",system-ui,"Segoe UI",sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font:1rem/1.6 var(--sans);color:var(--ink);background:var(--bg)}
+h1,h2,h3{font-family:var(--head);line-height:1.05;margin:0 0 .4em;letter-spacing:-.02em}
+a{color:inherit}button{font:inherit}
+:focus-visible{outline:3px solid #2563eb;outline-offset:2px}
+.wrap{width:min(1200px,100% - 32px);margin-inline:auto}
+.demo-bar{background:var(--lime);text-align:center;font-size:.85rem;padding:8px 16px;font-weight:500}
+.nav{position:sticky;top:0;z-index:20;background:rgba(244,243,239,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.logo{font-family:var(--head);font-weight:700;font-size:1.35rem;text-decoration:none;letter-spacing:-.03em}
+.logo i{font-style:normal;background:var(--ink);color:var(--lime);padding:0 6px;border-radius:6px;margin-left:2px}
+.nav nav{display:flex;gap:20px;align-items:center}
+.nav nav a{text-decoration:none;font-weight:500}
+.list-btn{display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:#fff;border:0;border-radius:999px;padding:.55em 1em;cursor:pointer}
+.list-btn b{background:var(--lime);color:var(--ink);border-radius:999px;min-width:22px;height:22px;display:grid;place-items:center;font-size:.8rem}
+.hero{padding:clamp(48px,7vw,90px) 0 40px}
+.hero__top{display:grid;grid-template-columns:1.3fr 1fr;gap:32px;align-items:end;margin-bottom:40px}
+.hero h1{font-size:clamp(2.5rem,6.2vw,5rem);margin:0}
+.hero h1 span{background:var(--lime);padding:0 .12em;border-radius:8px}
+.hero p{font-size:1.1rem;color:var(--muted);max-width:30em}
+.hero .tag{display:inline-block;border:1px solid var(--ink);border-radius:999px;padding:3px 12px;font-size:.8rem;margin-bottom:16px}
+.cats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:12px;margin-bottom:56px}
+.cat{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;text-align:left;cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:transform .25s,border-color .25s}
+.cat:hover{transform:translateY(-3px);border-color:var(--ink)}
+.cat strong{font-family:var(--head);font-size:1.2rem}
+.cat svg{width:48px;height:48px}
+.shop{display:grid;grid-template-columns:240px 1fr;gap:32px;padding-bottom:80px}
+.filters{position:sticky;top:84px;align-self:start;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px}
+.filters h2{font-size:1.1rem}
+.filters fieldset{border:0;padding:0;margin:0 0 18px}
+.filters legend{font-weight:600;font-size:.9rem;margin-bottom:8px}
+.opts{display:flex;flex-wrap:wrap;gap:6px}
+.opt{border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:.35em .9em;font-size:.9rem;cursor:pointer}
+.opt[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.filters input[type=range]{width:100%;accent-color:var(--ink)}
+.filters select{width:100%;padding:8px;border-radius:10px;border:1.5px solid var(--line);font:inherit;background:#fff}
+.reset{background:none;border:0;text-decoration:underline;cursor:pointer;padding:0;color:var(--muted)}
+.bar{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;gap:12px;flex-wrap:wrap}
+.bar p{margin:0;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.p{background:var(--card);border-radius:18px;overflow:hidden;border:1px solid var(--line);display:flex;flex-direction:column;animation:in .35s ease}
+@keyframes in{from{opacity:0;transform:scale(.98)}}
+.p__img{aspect-ratio:1/1.05;display:grid;place-items:center;position:relative;border:0;cursor:pointer;padding:0;width:100%}
+.p__img svg{width:72%;transition:transform .5s}
+.p:hover .p__img svg{transform:scale(1.06) rotate(-2deg)}
+.badge{position:absolute;top:12px;left:12px;background:var(--ink);color:var(--lime);font-size:.75rem;font-weight:600;padding:3px 10px;border-radius:999px}
+.p__body{padding:14px 16px 16px;display:flex;flex-direction:column;gap:2px;flex:1}
+.p__body h3{font-size:1.05rem;margin:0}
+.p__meta{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:8px}
+.price{font-weight:600}
+.price small{color:var(--muted);font-weight:400}
+.sizes{color:var(--muted);font-size:.85rem}
+.empty{grid-column:1/-1;text-align:center;padding:60px 20px;background:#fff;border-radius:18px;border:1px dashed var(--line)}
+dialog{border:0;border-radius:24px;padding:0;width:min(820px,calc(100% - 24px));max-height:calc(100% - 24px)}
+dialog::backdrop{background:rgba(0,0,0,.5)}
+.detail{display:grid;grid-template-columns:1fr 1fr}
+.detail__img{display:grid;place-items:center;min-height:320px}
+.detail__img svg{width:70%}
+.detail__info{padding:28px;position:relative}
+.close{position:absolute;top:12px;right:14px;background:none;border:0;font-size:1.8rem;cursor:pointer;line-height:1}
+.btn{display:inline-flex;justify-content:center;align-items:center;background:var(--ink);color:#fff;border:0;border-radius:12px;padding:.85em 1.2em;font-weight:600;cursor:pointer;width:100%;margin-top:14px}
+.btn:hover{background:#333}
+.note{font-size:.85rem;color:var(--muted);background:#f6f6f2;border-radius:10px;padding:10px 12px;margin-top:14px}
+.list ul{list-style:none;padding:0;margin:0 0 10px}
+.list li{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}
+.list li button{background:none;border:0;color:#b91c1c;cursor:pointer}
+footer{background:var(--ink);color:#bbb;padding:28px 0;font-size:.9rem}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+footer a{color:var(--lime)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media (max-width:980px){.grid{grid-template-columns:repeat(2,1fr)}.shop{grid-template-columns:1fr}.filters{position:static}.hero__top{grid-template-columns:1fr}}
+@media (max-width:640px){.cats{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.cat{padding:14px;gap:8px}.cat strong{font-size:1.05rem}.cat svg{width:38px;height:38px;flex:none}.nav nav a{display:none}.detail{grid-template-columns:1fr}.detail__img{min-height:220px}}
+@media (max-width:420px){.grid{grid-template-columns:1fr 1fr;gap:10px}.p__body{padding:10px 12px 12px}.p__body h3{font-size:.95rem}.sizes{display:none}}
+</style>
+</head>
+<body>
+<div class="demo-bar" role="note">Demostración de una <strong>tienda ficticia</strong> creada por LATIF WEB STUDIO. Productos y precios de ejemplo; no se realizan ventas ni pagos. <a href="../../index.html#precios">¿Quieres una web así? Ver precios</a></div>
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="#top">Hilo<i>Norte</i></a>
+    <nav aria-label="Principal">
+      <a href="#catalogo">Catálogo</a>
+      <a href="#info">Envíos y cambios</a>
+      <button class="list-btn" type="button" id="open-list" aria-label="Abrir mi lista de consulta">Mi lista <b id="count">0</b></button>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="wrap hero__top">
+    <div>
+      <span class="tag">Colección de ejemplo · Tienda ficticia</span>
+      <h1>Básicos que <span>duran</span> más que la temporada.</h1>
+    </div>
+    <p>Prendas de algodón y denim pensadas para el día a día. Elige tus favoritas, arma tu lista y consulta disponibilidad por WhatsApp, sin pagos en línea.</p>
+  </div>
+  <div class="wrap cats" id="cats"></div>
+</section>
+
+<section class="wrap shop" id="catalogo" aria-label="Catálogo">
+  <aside class="filters" aria-label="Filtros">
+    <h2>Filtrar</h2>
+    <fieldset><legend>Categoría</legend><div class="opts" id="f-cat"></div></fieldset>
+    <fieldset><legend>Talla</legend><div class="opts" id="f-size"></div></fieldset>
+    <fieldset>
+      <legend><label for="f-price">Precio máximo: <span id="price-out">S/ 200</span></label></legend>
+      <input id="f-price" type="range" min="40" max="200" step="10" value="200">
+    </fieldset>
+    <fieldset><legend><label for="f-sort">Ordenar</label></legend>
+      <select id="f-sort"><option value="new">Novedades</option><option value="asc">Precio: menor a mayor</option><option value="desc">Precio: mayor a menor</option></select>
+    </fieldset>
+    <button class="reset" type="button" id="reset">Quitar filtros</button>
+  </aside>
+  <div>
+    <div class="bar"><p id="results" aria-live="polite"></p></div>
+    <div class="grid" id="grid"></div>
+  </div>
+</section>
+
+<section class="wrap" id="info" style="padding-bottom:80px">
+  <h2>Envíos y cambios (texto de ejemplo)</h2>
+  <p style="max-width:60ch;color:var(--muted)">En una tienda real aquí se explicarían los métodos de entrega, los distritos con envío, el tiempo de despacho y la política de cambios. Esta demo no vende ni cobra: los botones solo preparan una lista para consultar disponibilidad.</p>
+</section>
+</main>
+
+<footer><div class="wrap"><span>Hilo Norte es una tienda ficticia. Demo creada por LATIF WEB STUDIO.</span><a href="../../index.html">Ver más proyectos</a></div></footer>
+
+<dialog id="dlg"><div id="dlg-body"></div></dialog>
+
+<script>
+(function(){
+  var SHAPES={
+    polo:'<path d="M60 30 L85 20 Q100 36 115 20 L140 30 L174 62 L152 84 L138 72 L138 200 L62 200 L62 72 L48 84 L26 62 Z"/><path d="M85 20 Q100 36 115 20" fill="none" stroke="rgba(0,0,0,.18)" stroke-width="3"/>',
+    polera:'<path d="M58 44 L80 30 Q100 20 120 30 L142 44 L178 150 L158 157 L140 96 L140 200 L60 200 L60 96 L42 157 L22 150 Z"/><path d="M78 32 Q100 -2 122 32 Q100 50 78 32Z" fill="rgba(0,0,0,.18)"/><rect x="74" y="130" width="52" height="30" rx="8" fill="rgba(0,0,0,.12)"/>',
+    casaca:'<path d="M60 36 L84 24 L100 40 L116 24 L140 36 L178 150 L158 157 L140 96 L140 200 L60 200 L60 96 L42 157 L22 150 Z"/><path d="M100 40 V200" stroke="rgba(0,0,0,.3)" stroke-width="3"/><path d="M84 24 L100 60 L116 24" fill="none" stroke="rgba(0,0,0,.25)" stroke-width="3"/>',
+    pantalon:'<path d="M64 18 H136 L150 206 H112 L100 78 L88 206 H50 Z"/><path d="M64 34 H136" stroke="rgba(0,0,0,.2)" stroke-width="3"/>',
+    short:'<path d="M58 52 H142 L154 164 H108 L100 104 L92 164 H46 Z"/><path d="M58 66 H142" stroke="rgba(0,0,0,.2)" stroke-width="3"/>',
+    vestido:'<path d="M82 18 L92 18 Q100 32 108 18 L118 18 L126 72 L166 206 H34 L74 72 Z"/><path d="M74 72 H126" stroke="rgba(0,0,0,.2)" stroke-width="3"/>',
+    gorra:'<path d="M42 130 Q42 64 100 64 Q158 64 158 130 Z"/><path d="M30 130 H184 Q176 152 122 146 H30 Z" fill="rgba(0,0,0,.25)"/><circle cx="100" cy="64" r="6" fill="rgba(0,0,0,.25)"/>'
+  };
+  function art(p,size){
+    return '<svg viewBox="0 0 200 220" role="img" aria-label="Ilustración de '+p.n.toLowerCase()+' color '+p.colorName+'" '+(size?'width="'+size+'"':'')+'><g fill="'+p.color+'" stroke="rgba(0,0,0,.28)" stroke-width="2" stroke-linejoin="round">'+SHAPES[p.s]+'</g></svg>';
+  }
+  var P=[
+    {n:"Polo esencial",cat:"Polos",s:"polo",color:"#f2f2ee",colorName:"blanco",bg:"#e7e4da",price:49,sizes:["S","M","L","XL"],tag:"Más vendido"},
+    {n:"Polo oversize",cat:"Polos",s:"polo",color:"#1f2937",colorName:"grafito",bg:"#d6d9de",price:59,sizes:["M","L","XL"]},
+    {n:"Polo rayas",cat:"Polos",s:"polo",color:"#2b59c3",colorName:"azul",bg:"#dbe4f7",price:55,sizes:["S","M","L"],tag:"Nuevo"},
+    {n:"Polera con capucha",cat:"Poleras",s:"polera",color:"#5f7a52",colorName:"oliva",bg:"#e0e8d9",price:119,sizes:["S","M","L","XL"]},
+    {n:"Polera básica",cat:"Poleras",s:"polera",color:"#c2410c",colorName:"terracota",bg:"#f6dfd2",price:109,sizes:["M","L"]},
+    {n:"Casaca denim",cat:"Casacas",s:"casaca",color:"#3b5b8c",colorName:"denim",bg:"#d9e2ef",price:189,sizes:["S","M","L"],tag:"Nuevo"},
+    {n:"Casaca ligera",cat:"Casacas",s:"casaca",color:"#d4b483",colorName:"arena",bg:"#efe6d6",price:159,sizes:["M","L","XL"]},
+    {n:"Jean recto",cat:"Pantalones",s:"pantalon",color:"#27406b",colorName:"índigo",bg:"#d7deea",price:139,sizes:["28","30","32","34"]},
+    {n:"Pantalón cargo",cat:"Pantalones",s:"pantalon",color:"#6b6a4f",colorName:"caqui",bg:"#e6e5d8",price:129,sizes:["30","32","34"]},
+    {n:"Short de lino",cat:"Pantalones",s:"short",color:"#e9dcc4",colorName:"crudo",bg:"#f1ebdf",price:79,sizes:["S","M","L"]},
+    {n:"Vestido midi",cat:"Vestidos",s:"vestido",color:"#8f2d56",colorName:"vino",bg:"#f1d9e3",price:149,sizes:["S","M","L"],tag:"Nuevo"},
+    {n:"Vestido camisero",cat:"Vestidos",s:"vestido",color:"#7aa6c2",colorName:"celeste",bg:"#dfeaf1",price:135,sizes:["S","M"]},
+    {n:"Gorra bordada",cat:"Accesorios",s:"gorra",color:"#111111",colorName:"negro",bg:"#dcdcdc",price:45,sizes:["Única"]},
+    {n:"Gorra lima",cat:"Accesorios",s:"gorra",color:"#b7e000",colorName:"lima",bg:"#eef7cc",price:45,sizes:["Única"]}
+  ];
+  P.forEach(function(p,i){p.id=i});
+  var CATS=["Todas","Polos","Poleras","Casacas","Pantalones","Vestidos","Accesorios"];
+  var SIZES=["S","M","L","XL","28","30","32","34","Única"];
+  var state={cat:"Todas",size:null,max:200,sort:"new"};
+  var list=[];
+
+  // Tarjetas de categoría
+  var catsEl=document.getElementById("cats");
+  ["Polos","Poleras","Pantalones","Vestidos"].forEach(function(c){
+    var sample=P.filter(function(p){return p.cat===c})[0];
+    var b=document.createElement("button");b.className="cat";b.type="button";
+    b.innerHTML='<span><strong>'+c+'</strong><br><small>'+P.filter(function(p){return p.cat===c}).length+' productos</small></span>'+art(sample);
+    b.querySelector("svg").setAttribute("aria-hidden","true");
+    b.addEventListener("click",function(){setCat(c);document.getElementById("catalogo").scrollIntoView({behavior:"smooth"})});
+    catsEl.appendChild(b);
+  });
+
+  function pills(el,values,key){
+    el.innerHTML="";
+    values.forEach(function(v){
+      var b=document.createElement("button");b.type="button";b.className="opt";b.textContent=v;
+      b.setAttribute("aria-pressed",String(state[key]===v||(key==="cat"&&false)));
+      b.addEventListener("click",function(){
+        if(key==="size")state.size=state.size===v?null:v;else state.cat=v;
+        sync();render();
+      });
+      el.appendChild(b);
+    });
+  }
+  function sync(){
+    document.querySelectorAll("#f-cat .opt").forEach(function(b){b.setAttribute("aria-pressed",String(b.textContent===state.cat))});
+    document.querySelectorAll("#f-size .opt").forEach(function(b){b.setAttribute("aria-pressed",String(b.textContent===state.size))});
+    document.getElementById("f-price").value=state.max;
+    document.getElementById("price-out").textContent="S/ "+state.max;
+    document.getElementById("f-sort").value=state.sort;
+  }
+  function setCat(c){state.cat=c;sync();render()}
+  pills(document.getElementById("f-cat"),CATS,"cat");
+  pills(document.getElementById("f-size"),SIZES,"size");
+  document.getElementById("f-price").addEventListener("input",function(e){state.max=+e.target.value;sync();render()});
+  document.getElementById("f-sort").addEventListener("change",function(e){state.sort=e.target.value;render()});
+  document.getElementById("reset").addEventListener("click",function(){state={cat:"Todas",size:null,max:200,sort:"new"};sync();render()});
+
+  var grid=document.getElementById("grid");
+  function render(){
+    var r=P.filter(function(p){
+      return (state.cat==="Todas"||p.cat===state.cat)&&(!state.size||p.sizes.indexOf(state.size)>-1)&&p.price<=state.max;
+    });
+    if(state.sort==="asc")r.sort(function(a,b){return a.price-b.price});
+    if(state.sort==="desc")r.sort(function(a,b){return b.price-a.price});
+    document.getElementById("results").textContent=r.length+(r.length===1?" producto":" productos");
+    grid.innerHTML="";
+    if(!r.length){grid.innerHTML='<div class="empty"><p><strong>No hay productos con estos filtros.</strong></p><p>Prueba con otra talla o sube el precio máximo.</p></div>';return}
+    r.forEach(function(p){
+      var a=document.createElement("article");a.className="p";
+      a.innerHTML='<button class="p__img" type="button" style="background:'+p.bg+'" aria-label="Ver ficha de '+p.n+'">'+(p.tag?'<span class="badge">'+p.tag+'</span>':'')+art(p)+'</button>'+
+        '<div class="p__body"><h3>'+p.n+'</h3><span class="sizes">Tallas: '+p.sizes.join(" · ")+'</span><div class="p__meta"><span class="price">S/ '+p.price+' <small>(ejemplo)</small></span></div></div>';
+      a.querySelector(".p__img").addEventListener("click",function(){openProduct(p)});
+      grid.appendChild(a);
+    });
+  }
+
+  var dlg=document.getElementById("dlg"),body=document.getElementById("dlg-body");
+  function openProduct(p){
+    var chosen=null;
+    body.innerHTML='<div class="detail"><div class="detail__img" style="background:'+p.bg+'">'+art(p)+'</div><div class="detail__info">'+
+      '<button class="close" type="button" aria-label="Cerrar">×</button><p style="margin:0;color:var(--muted)">'+p.cat+'</p><h2>'+p.n+'</h2>'+
+      '<p class="price" style="font-size:1.3rem">S/ '+p.price+' <small>(precio de ejemplo)</small></p>'+
+      '<p>Color '+p.colorName+'. Descripción de ejemplo: tejido suave, corte cómodo y costuras reforzadas. En una tienda real aquí irían material, medidas y cuidados.</p>'+
+      '<fieldset style="border:0;padding:0;margin:0"><legend style="font-weight:600;margin-bottom:6px">Talla</legend><div class="opts">'+
+      p.sizes.map(function(s){return '<button type="button" class="opt" aria-pressed="false">'+s+'</button>'}).join("")+'</div></fieldset>'+
+      '<button class="btn" type="button" id="add">Añadir a mi lista de consulta</button><p class="msg" role="status" aria-live="polite" style="margin:8px 0 0"></p>'+
+      '<p class="note">Demostración: no hay carrito de compra ni pagos. La lista solo sirve para consultar disponibilidad.</p></div></div>';
+    var opts=body.querySelectorAll(".opt"),msg=body.querySelector(".msg");
+    if(p.sizes.length===1){chosen=p.sizes[0];opts[0].setAttribute("aria-pressed","true")}
+    opts.forEach(function(o){o.addEventListener("click",function(){opts.forEach(function(x){x.setAttribute("aria-pressed","false")});o.setAttribute("aria-pressed","true");chosen=o.textContent})});
+    body.querySelector("#add").addEventListener("click",function(){
+      if(!chosen){msg.textContent="Elige una talla primero.";return}
+      list.push({n:p.n,size:chosen,price:p.price});updateCount();
+      msg.textContent="Añadido: "+p.n+" (talla "+chosen+").";
+    });
+    body.querySelector(".close").addEventListener("click",function(){dlg.close()});
+    dlg.showModal();
+  }
+  function updateCount(){document.getElementById("count").textContent=list.length}
+  document.getElementById("open-list").addEventListener("click",function(){
+    var total=list.reduce(function(s,i){return s+i.price},0);
+    body.innerHTML='<div class="detail__info list"><button class="close" type="button" aria-label="Cerrar">×</button><h2>Mi lista de consulta</h2>'+
+      (list.length?'<ul>'+list.map(function(i,k){return '<li><span>'+i.n+' · talla '+i.size+'</span><span>S/ '+i.price+' <button type="button" data-k="'+k+'" aria-label="Quitar '+i.n+'">Quitar</button></span></li>'}).join("")+'</ul><p><strong>Total de referencia: S/ '+total+'</strong> (precios de ejemplo)</p>'+
+      '<button class="btn" type="button" id="consult">Preparar consulta por WhatsApp</button><p class="msg" role="status" aria-live="polite"></p>':'<p>Tu lista está vacía. Abre un producto y añádelo con su talla.</p>')+
+      '<p class="note">En la web real, este botón abriría WhatsApp con la lista para que la tienda confirme stock. En esta demo no se envía nada ni se cobra.</p></div>';
+    body.querySelector(".close").addEventListener("click",function(){dlg.close()});
+    body.querySelectorAll("[data-k]").forEach(function(b){b.addEventListener("click",function(){list.splice(+b.dataset.k,1);updateCount();dlg.close();document.getElementById("open-list").click()})});
+    var c=body.querySelector("#consult");
+    if(c)c.addEventListener("click",function(){body.querySelector(".msg").textContent="Demo: aquí se abriría WhatsApp con "+list.length+" producto(s). No se ha enviado nada."});
+    if(!dlg.open)dlg.showModal();
+  });
+  dlg.addEventListener("click",function(e){if(e.target===dlg)dlg.close()});
+
+  sync();render();
+})();
+</script>
+</body>
+</html>

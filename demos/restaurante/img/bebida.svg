@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="Ilustración de una jarra de chicha morada">
+<rect width="400" height="400" fill="#3b1d4a"/>
+<circle cx="200" cy="200" r="150" fill="#2a1236" opacity=".6"/>
+<path d="M140 110h120l-12 200a20 20 0 0 1-20 18h-56a20 20 0 0 1-20-18z" fill="#e9e1f0" opacity=".35" stroke="#efe6f6" stroke-width="4"/>
+<path d="M146 160h108l-9 148a14 14 0 0 1-14 13h-62a14 14 0 0 1-14-13z" fill="#6b1f6e"/>
+<path d="M146 160h108" stroke="#a84aa9" stroke-width="6"/>
+<path d="M260 140q50 10 40 70q-6 40-48 46" fill="none" stroke="#efe6f6" stroke-width="10" stroke-linecap="round" opacity=".6"/>
+<g fill="#f6e3a0"><circle cx="180" cy="200" r="10"/><circle cx="215" cy="235" r="8"/></g>
+<rect x="190" y="70" width="10" height="120" rx="5" fill="#7cbf3b" transform="rotate(12 195 130)"/>
+</svg>

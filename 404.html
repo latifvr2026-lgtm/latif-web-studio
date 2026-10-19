@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Página no encontrada — LATIF WEB STUDIO</title>
+  <meta name="robots" content="noindex">
+  <style>
+    body{margin:0;min-height:100vh;display:grid;place-items:center;background:#fbf8f3;color:#2b2a33;font:1.05rem/1.6 system-ui,"Segoe UI",sans-serif;padding:16px;text-align:center}
+    h1{font-family:Georgia,serif;font-size:clamp(2rem,6vw,3rem);color:#16151d;margin:.2em 0}
+    .n{font-family:Georgia,serif;font-size:4rem;color:#b33a20;margin:0}
+    a{display:inline-block;margin-top:16px;background:#16151d;color:#fff;text-decoration:none;padding:.8em 1.4em;border-radius:999px;font-weight:700}
+    a:hover{background:#b33a20}
+  </style>
+</head>
+<body>
+  <main>
+    <p class="n">404</p>
+    <h1>Esta página no existe</h1>
+    <p>Puede que el enlace esté mal escrito o que la página se haya movido.</p>
+    <a id="home" href="./">Ir a LATIF WEB STUDIO</a>
+  </main>
+  <script>
+    // En GitHub Pages de proyecto (usuario.github.io/repositorio/) el inicio está en el primer segmento de la ruta
+    (function () {
+      var parts = location.pathname.split("/").filter(Boolean);
+      if (location.hostname.slice(-10) === "github.io" && parts.length) document.getElementById("home").href = "/" + parts[0] + "/";
+      else document.getElementById("home").href = "/";
+    })();
+  </script>
+</body>
+</html>
